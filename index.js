@@ -166,17 +166,20 @@ function saveReadmeFile(username, data) {
   //create directory
   let saveDir = path.join(__dirname, "\\output\\" + username);
   fs.mkdir(saveDir, { recursive: true }, (err) => {
-    if (err) throw err;
+    if (err)
+    {
+       console.error(err) 
+    }
+    else
+    {
+      //save README file
+      filePath = saveDir + "\\" + dateStr + "_README.md";
+
+      fs.writeFile(filePath, data, (err) => {
+        err ? console.error(err) : console.log('README.md saved to "' + filePath + '"') 
+      });
+    }
   });
-
-
-  //save README file
-  filePath = saveDir + "\\" + dateStr + "_README.md";
-
-  fs.writeFile(filePath, data, (err) => {
-    err ? console.error(err) : console.log('README.md saved to "' + filePath + '"') 
-  });
-
 }
 
 function doubleUnderline (str)
@@ -238,9 +241,14 @@ inquirer
 
   //template license section
   licenseData = licenseTemplate (response.license);
-  tempLicense = licenseData.template;
+  
+  if (licenseData.template != "")
+  {
+    tempLicense = "## License\n\n" + licenseData.template + INDENT;
+  }
+  
 
-
+  
 
 
   //template title section
@@ -320,8 +328,8 @@ inquirer
     
     let githubProfileLink = "https://github.com/" + response.githubUsername;
 
-    tempQuestions += "### Github Profile: " + githubProfileLink + "\n";
-    tempQuestions += "### Email: " + response.email + " (Please reach me with additional questions)\n";
+    tempQuestions += "Github Profile: " + githubProfileLink + "\n";
+    tempQuestions += "Email: " + response.email + " (Please reach me with additional questions)\n";
   }
 
   if (tempQuestions != "")
@@ -335,6 +343,7 @@ inquirer
     tableOfContent = "## Table of Contents\n\n" + tableOfContent + INDENT;
 
 
+  
 
   template = `${tempTitle}${tempDescription}${tableOfContent}${tempPreview}${tempInstallation}${tempContribution}${tempUsage}${tempQuestions}${tempLicense}`;
 
