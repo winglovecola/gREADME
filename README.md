@@ -1,7 +1,6 @@
 # 23424
 =====
-
-![License Badge](https://img.shields.io/badge/license-BSD 2-clause "Simplified" license-lightgreen)
+![License Badge](https://img.shields.io/badge/license-BSD%202-clause%20%22Simplified%22%20license-lightgreen)
 
 
 
@@ -52,6 +51,7 @@
 ## Questions
 
 Github Profile: https://github.com/234234
+
 Email: 234234 (Please reach me with additional questions)
 
 
