@@ -49,6 +49,13 @@ const questions = [
   },
 
   {
+    type: 'confirm',
+    message: 'Do you want to include a "Table of Contents" section?',
+    name: 'tableOfContent',
+    
+  },
+
+  {
     type: 'list',
     message: 'Please select the type of License you want to use in your project.',
     choices: [
@@ -182,16 +189,7 @@ function saveReadmeFile(username, data) {
   });
 }
 
-function doubleUnderline (str)
-{
-  let underline = "";
-  for (let i = 0; i < str.length; i++) {
 
-    underline += "=";
-  } 
-
-  return underline;
-}
 
 
 //create license template and badge
@@ -208,7 +206,7 @@ function licenseTemplate (license) {
   {
     thisLicenseData.template = "This project is under the license of " + license + ". For more detail, please visit [https://choosealicense.com/](https://choosealicense.com/)." + INDENT;
 
-    thisLicenseData.badge = "![License Badge](" + "https://img.shields.io/badge/license-" + encodeURIComponent(license) + "-lightgreen)";
+    thisLicenseData.badge = "![License Badge](" + "https://img.shields.io/badge/license-" + encodeURIComponent(license.replace (/-/g, '--')) + "-lightgreen)";
   }
 
   return thisLicenseData;
@@ -252,7 +250,7 @@ inquirer
 
 
   //template title section
-  tempTitle = "# " + response.title + "\n" + doubleUnderline (response.title) + "\n" + licenseData.badge + INDENT;
+  tempTitle = "# " + response.title + "\n" + licenseData.badge + INDENT;
 
 
 
@@ -299,13 +297,13 @@ inquirer
       let i = 1;
       screenshotArray.forEach (element => {
 
-        tempScreenshot += "![Screenshot " + i + "](" + element + ")\n";
+        tempScreenshot += "![Screenshot " + i + "](" + element + ")\n\n";
         i++;
       });
     }
     
     
-    tempPreview = "## Preview\n\n" + tempScreenshot + INDENT;
+    tempPreview = "## Preview\n\n" + tempScreenshot.trim () + INDENT;
     tableOfContent += "- [Preview](#preview)\n";
   }
 
@@ -328,22 +326,33 @@ inquirer
     
     let githubProfileLink = "https://github.com/" + response.githubUsername;
 
-    tempQuestions += "Github Profile: " + githubProfileLink + "\n";
-    tempQuestions += "Email: " + response.email + " (Please reach me with additional questions)\n";
+    tempQuestions += "Github Profile: " + githubProfileLink + "\n\n";
+    tempQuestions += "Email: " + response.email + " (Please reach me with additional questions)\n\n";
   }
 
   if (tempQuestions != "")
   {
-    tempQuestions = "## Questions\n\n" + tempQuestions + INDENT;
+    tempQuestions = "## Questions\n\n" + tempQuestions.trim () + INDENT;
 
     tableOfContent += "- [Questions](#questions)\n";
   }
 
-  if (tableOfContent != "")
-    tableOfContent = "## Table of Contents\n\n" + tableOfContent + INDENT;
-
-
   
+  if (licenseData.template != "")
+      tableOfContent += "- [License](#license)\n";
+
+
+  if (response.tableOfContent == true)
+  {
+    if (tableOfContent != "")
+      tableOfContent = "## Table of Contents\n\n" + tableOfContent + INDENT;
+  }
+  else
+  {
+    tableOfContent = "";
+  }
+
+    
 
   template = `${tempTitle}${tempDescription}${tableOfContent}${tempPreview}${tempInstallation}${tempContribution}${tempUsage}${tempQuestions}${tempLicense}`;
 
