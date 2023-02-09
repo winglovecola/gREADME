@@ -2,9 +2,17 @@ const inquirer = require('inquirer');
 const fs = require('fs');
 const path = require('path');
 
+
+const INDENT = "\n\n\n\n";
+
+
 let githubUsername = "";
 let screenshotArray = [];
 let screenshotCount = 0;
+
+let licenseData = {};
+
+
 
 
 //inquirer questions array
@@ -171,6 +179,40 @@ function saveReadmeFile(username, data) {
 
 }
 
+function doubleUnderline (str)
+{
+  let underline = "";
+  for (let i = 0; i < str.length; i++) {
+
+    underline += "=";
+  } 
+
+  return underline;
+}
+
+
+//create license template and badge
+function licenseTemplate (license) {
+
+  let thisLicenseData = {};
+
+  if (license == "None")
+  {
+    thisLicenseData.template = "Please refer to the LICENSE in the repo." + INDENT;
+    thisLicenseData.badge = "";
+  }
+  else 
+  {
+    thisLicenseData.template = "This project is under the license of " + license + ". For more detail, please visit [https://choosealicense.com/](https://choosealicense.com/)." + INDENT;
+
+    thisLicenseData.badge = "![License Badge](" + "https://img.shields.io/badge/license-" + encodeURIComponent(license) + "-lightgreen)";
+  }
+
+  return thisLicenseData;
+}
+
+
+
 
 
 //initialize app
@@ -183,7 +225,6 @@ function init() {
 init();
 
 
-
 inquirer
   .prompt(questions)
   .then((response) => {
@@ -193,16 +234,21 @@ inquirer
 
   let template = "", tempTitle = "", tempDescription = "", tempInstallation = "", tempUsage = "", tempPreview = "", tempContribution = "", tempQuestions = "", tableOfContent = "";
 
-  const INDENT = "\n\n\n\n";
-
   
+
+  //template license section
+  licenseData = licenseTemplate (response.license);
+  tempLicense = licenseData.template;
+
 
 
 
   //template title section
-  tempTitle = "# " + response.title + INDENT;
+  tempTitle = "# " + response.title + "\n" + doubleUnderline (response.title) + "\n" + licenseData.badge + INDENT;
 
 
+
+  
   //template description section
   if (response.description != "")
   {
@@ -290,7 +336,9 @@ inquirer
 
 
 
-  template = `${tempTitle}${tempDescription}${tableOfContent}${tempPreview}${tempInstallation}${tempContribution}${tempUsage}${tempQuestions}`;
+  template = `${tempTitle}${tempDescription}${tableOfContent}${tempPreview}${tempInstallation}${tempContribution}${tempUsage}${tempQuestions}${tempLicense}`;
+
+
 
   //Save README file
   saveReadmeFile (githubUsername, template);
