@@ -1,11 +1,11 @@
-# 234234
-![License Badge](https://img.shields.io/badge/license-Creative%20Commons%20Zero%20v1.0%20Universal-lightgreen)
+# gREADME
+![License Badge](https://img.shields.io/badge/license-MIT%20License-lightgreen)
 
 
 
 ## Description
 
-33
+gREADME is a light weight node app that help you create a professional README.md for your github project really fast. Simply fill in the required fields and skip any section by enter a blank space.
 
 
 
@@ -14,7 +14,6 @@
 - [Installation](#installation)
 - [Usage](#usage)
 - [Preview](#preview)
-- [Contribution](#contribution)
 - [Questions](#questions)
 - [License](#license)
 
@@ -23,47 +22,33 @@
 
 ## Preview
 
-![Screenshot 1](2342342)
-
-![Screenshot 2](234)
+![Screenshot](https://github.com/winglovecola/gREADME/blob/main/assets/images/screenshot.jpg?raw=true)
 
 
 
 ## Installation
 
-23423434
-
-
-
-## Contribution
-
-asdfasdfasdf
+npm install
 
 
 
 ## Usage
 
-234234
+node index.js
 
 
 
 ## Questions
 
-<<<<<<< HEAD
-Github Profile: https://github.com/234234
+Github Profile: https://github.com/winglovecola
 
-Email: 234234 (Please reach me with additional questions)
-=======
-Github Profile: https://github.com/2323
->>>>>>> b8a95b31b9ccb5d08d16f8ae0ef48966ae7b3673
-
-Email: asdfasdf (Please reach me with additional questions)
+Email: winglovework@gmail.com (Please reach me with additional questions)
 
 
 
 ## License
 
-This project is under the license of Creative Commons Zero v1.0 Universal. For more detail, please visit [https://choosealicense.com/](https://choosealicense.com/).
+This project is under the license of MIT License. For more detail, please visit [https://choosealicense.com/](https://choosealicense.com/).
 
 
 
