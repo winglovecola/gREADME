@@ -24,9 +24,9 @@ gREADME is a light weight node app that help you create a professional README.md
 
 ![Screenshot](https://github.com/winglovecola/gREADME/blob/main/assets/images/screenshot.jpg?raw=true)
 
-[Introduction Video](https://drive.google.com/file/d/1R-zRxrurg3v7jXzRhUcwlPvLgO96gkWl/view?usp=sharing)
+### [Introduction Video](https://drive.google.com/file/d/1R-zRxrurg3v7jXzRhUcwlPvLgO96gkWl/view?usp=sharing)
 
-[Usage Walkthrough Video](https://drive.google.com/file/d/1qG4IA7JKeQkNltBqEyLrRj0rjFpQF56p/view?usp=sharing)
+### [Usage Walkthrough Video](https://drive.google.com/file/d/1qG4IA7JKeQkNltBqEyLrRj0rjFpQF56p/view?usp=sharing)
 
 
 
