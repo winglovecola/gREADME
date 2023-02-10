@@ -91,17 +91,21 @@ const questions = [
       // Do async stuff
       setTimeout(function() {
         
+
         if (input != '') {
           // Pass the return value in the done callback
 
           screenshotCount++;
           screenshotArray.push (input);
+    
+          //done('Screenshot ' + screenshotCount + ' added. Type another URL to add more -OR- leave blank to skip.');
 
-          done('Screenshot ' + screenshotCount + ' added. Type another URL to add more -OR- leave blank to skip.');
+          //return true;
 
-          return;
+
         }
-        console.log (screenshotCount + " Screenshot Saved");
+
+        //console.log (screenshotCount + " Screenshot Saved");
         done(null, true); 
           
       }, 300);
