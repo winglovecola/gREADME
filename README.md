@@ -5,7 +5,7 @@
 
 ## Description
 
-gREADME is a light weight node app that help you create a professional README.md for your github project really fast. Simply fill in the required fields and skip any section by enter a blank space.
+gREADME is a lightweight node app that helps you create a professional README.md for your GitHub project fast. Simply fill in the required fields and skip any section by entering a blank space.
 
 
 
